@@ -9,9 +9,6 @@ class Login extends React.Component {
             email: '',
             password: ''
         }
-        this.handleChangeEmail = this.handleChangeEmail.bind(this)
-        this.handleChangePassword = this.handleChangePassword.bind(this)
-        this.login = this.login.bind(this)
     }
 
     handleChangeEmail(event) {
@@ -38,9 +35,9 @@ class Login extends React.Component {
         return (
             <div >
                 <form className='form' name="uploadForm" encType="multipart/form-data">
-                    <input type="text"  placeholder="Email" onChange={this.handleChangeEmail}/>
-                    <input type="text"  placeholder="Password" onChange={this.handleChangePassword}/>
-                    <input type="button" value="Login" onClick={this.login}/>
+                    <input type="text" value={this.state.email}  placeholder="Email" onChange={this.handleChangeEmail.bind(this)}/>
+                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword.bind(this)}/>
+                    <input type="button" value="Login" onClick={this.login.bind(this)}/>
                 </form>
             </div>
         )
