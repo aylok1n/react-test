@@ -18,8 +18,6 @@ class Login extends React.Component {
         this.setState({password: event.target.value});
     }
     async login(){
-        console.log(this.state.email)
-        console.log(this.state.password)
         console.log(JSON.stringify(this.state))
         let response = await fetch('https://internsapi.public.osora.ru/api/auth/login', {
             method: 'POST',
@@ -28,8 +26,17 @@ class Login extends React.Component {
             },
             body: JSON.stringify(this.state)
           });
-        let result = await response.json();
-        console.log(result)
+          if (response.ok) {
+            let result = await response.json();
+            if(result.status === true){
+                console.log(result.data.access_token)
+                localStorage.setItem('Users', JSON.stringify({email: this.state.email, access_token: result.data.access_token}))
+            } else{
+                console.log(result.errors)
+            }
+          } else {
+            alert("Ошибка HTTP: " + response.status);
+          }
     }
     render() {
         return (

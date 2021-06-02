@@ -31,7 +31,16 @@ class Registration extends React.Component {
             },
             body: JSON.stringify(this.state)
           });
-        let result = await response.json();
+          if (response.ok) {
+            let result = await response.json();
+            if(result.status === true){
+                console.log(result.data)
+            } else{
+                console.log(result.errors)
+            }
+          } else {
+            alert("Ошибка HTTP: " + response.status);
+          }
     }
     render() {
         return (
