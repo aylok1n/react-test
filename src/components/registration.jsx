@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'
+
 class Registration extends React.Component {
     constructor(props) {
         super(props);
@@ -44,13 +44,15 @@ class Registration extends React.Component {
     }
     render() {
         return (
-            <div >
+            <div className="form-container">
                 <form className='form' name="uploadForm" encType="multipart/form-data">
-                    <input type="text" value={this.state.name}  placeholder="Name" onChange={this.handleChangeName.bind(this)}/>
-                    <input type="text" value={this.state.email}  placeholder="Email" onChange={this.handleChangeEmail.bind(this)}/>
-                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword.bind(this)}/>
-                    <input type="text" value={this.state.password_confirmation} placeholder="Enter password" onChange={this.handleChangePasswordConfarmation.bind(this)}/>
-                    <input type="button" value="Registration" onClick={this.registration.bind(this)}/>
+                    <p className='form-header'>Зарегистрируйтесь</p>
+                    <input className='form-input-reg' type="text" value={this.state.name}  placeholder="Name" onChange={this.handleChangeName.bind(this)}/>
+                    <input className='form-input-reg' type="text" value={this.state.email}  placeholder="Email" onChange={this.handleChangeEmail.bind(this)}/>
+                    <input className='form-input-reg' type="text" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword.bind(this)}/>
+                    <input className='form-input-reg' type="text" value={this.state.password_confirmation} placeholder="Enter password" onChange={this.handleChangePasswordConfarmation.bind(this)}/>
+                    {/* <p className='form-text'>Уже зарегистрированны? <a className='form-text-hyperlink'>Войти.</a></p> */}
+                    <input className='form-button-reg' type="button" value="Registration" onClick={this.registration.bind(this)}/>
                 </form>
             </div>
         )

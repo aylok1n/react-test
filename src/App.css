@@ -1,40 +1,74 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-  font-size: calc(10px + 2vmin);
+  text-align: center;
+  background-color: #282c34;
+  justify-content: center;
+}
+
+
+.form-container{
+  width: 100vw;
+  height: 100vh;
+  background-color: #282c34;
+  display: flex;
+  width: 800px;
+  height: 600px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-header{
+  color: #00a2ff;
+  font-size: 36px;
+}
+.form-input{
+  width: 400px;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px  #00a2ff solid;
+  text-align: center;
+  font-size: 24px;
+  color: #00a2ff;
+  margin: 15px 0px;
+}
+.form-button{
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #00a2ff ;
+  font-size: 20px;
+  margin: 5px 100px;
+}
+.form-input-reg{
+  width: 400px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px  #00a2ff solid;
+  text-align: center;
+  font-size: 24px;
+  color: #00a2ff;
+  margin: 10px 0px;
+}
+.form-button-reg{
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #00a2ff ;
+  font-size: 20px;
+  margin: 5px 100px;
+}
+.form-text{
   color: white;
+  font-size: 20px;
 }
-
-.App-header-button{
-  width: 100px;
-  height: 30px;
-  margin: 0px 20px;
-}
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-text-hyperlink{
+  color: #00a2ff;
 }

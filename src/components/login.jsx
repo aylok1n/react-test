@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'
+
 
 class Login extends React.Component {
 
@@ -40,11 +40,13 @@ class Login extends React.Component {
     }
     render() {
         return (
-            <div >
+            <div className="form-container">
                 <form className='form' name="uploadForm" encType="multipart/form-data">
-                    <input type="text" value={this.state.email}  placeholder="Email" onChange={this.handleChangeEmail.bind(this)}/>
-                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword.bind(this)}/>
-                    <input type="button" value="Login" onClick={this.login.bind(this)}/>
+                    <p className='form-header'>Добро пожаловать</p>
+                    <input className='form-input' type="text" value={this.state.email}  placeholder="Email" onChange={this.handleChangeEmail.bind(this)}/>
+                    <input className='form-input' type="text" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword.bind(this)}/>
+                    {/* <p className='form-text'>Нет аккаунта? <a className='form-text-hyperlink'>Зарегистрироваться</a></p> */}
+                    <input className='form-button' type="button" value="Login" onClick={this.login.bind(this)}/>
                 </form>
             </div>
         )
