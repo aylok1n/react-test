@@ -9,7 +9,9 @@ class Game extends React.Component {
             options: [],
             points: 0,
             question: '',
-            time:0 
+            time:0 ,
+            type_hard: 0,
+            type: 1
         }
     }
 
@@ -18,11 +20,36 @@ class Game extends React.Component {
         this.setState({points: JSON.parse(localStorage.getItem('start')).points})
         this.setState({question: JSON.parse(localStorage.getItem('start')).question})
         this.setState({time: JSON.parse(localStorage.getItem('start')).time})
-        console.log(JSON.parse(localStorage.getItem('start'))) 
+        this.setState({type_hard: JSON.parse(localStorage.getItem('start')).type_hard})
+        // console.log(JSON.parse(localStorage.getItem('start')))
     }
 
-    play(){
 
+    async play(event){
+        let access_token = JSON.parse(localStorage.getItem('access_token')).access_token
+        let answer = Number(event.target.value)
+        let response = await fetch('https://internsapi.public.osora.ru/api/game/play', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${access_token}`,
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({answer: answer, type_hard: this.state.type_hard, type: this.state.type})
+          });
+          if (response.ok) {
+            let result = await response.json();
+            if(result.status === true){
+                console.log(result.data)
+                this.setState({options: result.data.options})
+                this.setState({points: result.data.points})
+                this.setState({question: result.data.question})
+                this.setState({time: result.data.time})
+            } else{
+                console.log(result.errors)
+            }
+          } else {
+            alert("Ошибка HTTP: " + response.status);
+          }
     }
 
     render() {

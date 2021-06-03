@@ -29,7 +29,7 @@ class Login extends React.Component {
           if (response.ok) {
             let result = await response.json();
             if(result.status === true){
-                console.log(result.data)
+                // console.log(result.data)
                 localStorage.setItem('access_token', JSON.stringify({access_token: result.data.access_token}))
                 this.props.history.push('/startGame')
             } else{

@@ -28,7 +28,8 @@ class StartGame extends React.Component {
           if (response.ok) {
             let result = await response.json();
             if(result.status === true){
-                console.log(result.data)
+                // console.log(result.data)
+                result.data.type_hard = this.state.type_hard
                 localStorage.setItem('start', JSON.stringify(result.data))
                 this.props.history.push('/Game')
             } else{
