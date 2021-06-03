@@ -29,8 +29,9 @@ class Login extends React.Component {
           if (response.ok) {
             let result = await response.json();
             if(result.status === true){
-                console.log(result.data.access_token)
-                localStorage.setItem('Users', JSON.stringify({email: this.state.email, access_token: result.data.access_token}))
+                console.log(result.data)
+                localStorage.setItem('access_token', JSON.stringify({access_token: result.data.access_token}))
+                this.props.history.push('/startGame')
             } else{
                 console.log(result.errors)
             }
@@ -45,7 +46,7 @@ class Login extends React.Component {
                     <p className='form-header'>Добро пожаловать</p>
                     <input className='form-input' type="text" value={this.state.email}  placeholder="Email" onChange={this.handleChangeEmail.bind(this)}/>
                     <input className='form-input' type="text" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword.bind(this)}/>
-                    {/* <p className='form-text'>Нет аккаунта? <a className='form-text-hyperlink'>Зарегистрироваться</a></p> */}
+                    <p className='form-text'>Нет аккаунта? <a href='/registration' className='form-text-hyperlink'>Зарегистрироваться</a></p>
                     <input className='form-button' type="button" value="Login" onClick={this.login.bind(this)}/>
                 </form>
             </div>

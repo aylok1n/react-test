@@ -9,8 +9,6 @@
 
 
 .form-container{
-  width: 100vw;
-  height: 100vh;
   background-color: #282c34;
   display: flex;
   width: 800px;
@@ -70,5 +68,47 @@
   font-size: 20px;
 }
 .form-text-hyperlink{
+  color: #00a2ff;
+}
+
+.game-container{
+  background-color: #282c34;
+  display: flex;
+  width: 800px;
+  height: 600px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+.game-header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.game-points{
+  color: #00a2ff;
+  font-size: 24px;
+  margin-right: 40px;
+}
+.game-time{
+  color: #00a2ff;
+  font-size: 24px;
+  margin-left: 40px;
+}
+.game-text-red{
+  font-size: 28px;
+  color: red;
+}
+.game-question{
+  color: yellow;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+.game-option{
+  width: 60px;
+  height: 40px;
+  margin: 5px;
+  font-size: 30px;
   color: #00a2ff;
 }

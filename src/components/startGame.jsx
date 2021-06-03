@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class StartGame extends React.Component {
 
     constructor(props) {
@@ -16,7 +15,7 @@ class StartGame extends React.Component {
     }
 
     async start(){
-        let access_token = JSON.parse(localStorage.getItem('Users')).access_token
+        let access_token = JSON.parse(localStorage.getItem('access_token')).access_token
         console.log(this.state)
         let response = await fetch('https://internsapi.public.osora.ru/api/game/play', {
             method: 'POST',
@@ -29,7 +28,9 @@ class StartGame extends React.Component {
           if (response.ok) {
             let result = await response.json();
             if(result.status === true){
-                console.log(result)
+                console.log(result.data)
+                localStorage.setItem('start', JSON.stringify(result.data))
+                this.props.history.push('/Game')
             } else{
                 console.log( result.errors)
             }

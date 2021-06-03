@@ -35,6 +35,7 @@ class Registration extends React.Component {
             let result = await response.json();
             if(result.status === true){
                 console.log(result.data)
+                this.props.history.push('/')
             } else{
                 console.log(result.errors)
             }
@@ -51,7 +52,7 @@ class Registration extends React.Component {
                     <input className='form-input-reg' type="text" value={this.state.email}  placeholder="Email" onChange={this.handleChangeEmail.bind(this)}/>
                     <input className='form-input-reg' type="text" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword.bind(this)}/>
                     <input className='form-input-reg' type="text" value={this.state.password_confirmation} placeholder="Enter password" onChange={this.handleChangePasswordConfarmation.bind(this)}/>
-                    {/* <p className='form-text'>Уже зарегистрированны? <a className='form-text-hyperlink'>Войти.</a></p> */}
+                    <p className='form-text'>Уже зарегистрированны? <a href='/' className='form-text-hyperlink'>Войти.</a></p>
                     <input className='form-button-reg' type="button" value="Registration" onClick={this.registration.bind(this)}/>
                 </form>
             </div>
