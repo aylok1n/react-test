@@ -112,3 +112,54 @@
   font-size: 30px;
   color: #00a2ff;
 }
+
+.result-container{
+  background-color: #282c34;
+  display: flex;
+  width: 800px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+.result-text{
+  display: inline-flex;
+  justify-content: center;
+  width: 400px;
+  font-weight: 600;
+  color: #00a2ff;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.result-text-symbol{
+  font-size: 26px;
+  font-weight: 800;
+  color: #0022ff;;
+}
+.result-text-endGame{
+  font-weight: 600;
+  color: #00a2ff;
+  font-size: 28px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.result-questions-container{
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+}
+.result-question-header{
+  width: 400px;
+  display: inline-flex;
+  justify-content: space-evenly;
+  color: #00a2ff;
+  font-size: 20px;
+}
+.result-question{
+  width: 400px;
+  display: inline-flex;
+  justify-content: space-around;
+  padding: 5px 0px;
+  color: #00a2ff;
+  font-size: 20px;
+}

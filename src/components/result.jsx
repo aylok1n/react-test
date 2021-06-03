@@ -27,14 +27,25 @@ class Result extends React.Component {
 
     render() {
         return (
-            <div className="game-container">
-                aboba
-                {/* <div className='game-header'>
-                    <div className='game-points'>Счёт<div className='game-text-red'>{this.state.points}</div></div>
-                    <div className='game-time'>Время<div className='game-text-red'>{this.state.time}</div></div>
+            <div className="result-container">
+                <div className='result-text'>Score: <div className="result-text-symbol"> {this.state.points}</div></div>
+                <div className='result-text'>Total questions: <div className="result-text-symbol"> {this.state.total_questions}</div></div>
+                <div className='result-text-endGame'>End game</div>
+                
+                <div className='result-questions-container'>
+                    <div className="result-question-header">
+                            <div className="result-header-item">question</div>
+                            <div className="result-header-item">current answer</div>
+                            <div className="result-header-item">answer</div>
+                    </div>
+                    {this.state.questions.map((i,index) => 
+                        <div className='result-question' key={index}>
+                            <div className="result-question-item">{i.question}</div>
+                            <div className="result-question-item">{i.current_answer}</div>
+                            <div className="result-question-item">{i.answer}</div>
+                        </div>)
+                    }
                 </div>
-                <div className='game-question'>{this.state.question}</div>
-                <div>{this.state.options.map((i,index) => <input className='game-option' key={index} type='button' value={i} onClick={this.play.bind(this)}/>)}</div> */}
             </div>
         )
     }
