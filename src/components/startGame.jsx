@@ -31,7 +31,7 @@ class StartGame extends React.Component {
                 // console.log(result.data)
                 result.data.type_hard = this.state.type_hard
                 localStorage.setItem('start', JSON.stringify(result.data))
-                this.props.history.push('/Game')
+                this.props.history.push('/game')
             } else{
                 console.log( result.errors)
             }

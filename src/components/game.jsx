@@ -11,7 +11,7 @@ class Game extends React.Component {
             question: '',
             time:0 ,
             type_hard: 0,
-            type: 1
+            type: 2
         }
     }
 
@@ -21,7 +21,6 @@ class Game extends React.Component {
         this.setState({question: JSON.parse(localStorage.getItem('start')).question})
         this.setState({time: JSON.parse(localStorage.getItem('start')).time})
         this.setState({type_hard: JSON.parse(localStorage.getItem('start')).type_hard})
-        // console.log(JSON.parse(localStorage.getItem('start')))
     }
 
 
@@ -39,11 +38,18 @@ class Game extends React.Component {
           if (response.ok) {
             let result = await response.json();
             if(result.status === true){
-                console.log(result.data)
-                this.setState({options: result.data.options})
-                this.setState({points: result.data.points})
-                this.setState({question: result.data.question})
-                this.setState({time: result.data.time})
+                if(result.data.question !== undefined){
+                    console.log(result.data)
+                    this.setState({options: result.data.options})
+                    this.setState({points: result.data.points})
+                    this.setState({question: result.data.question})
+                    this.setState({time: result.data.time})
+                } else {
+                    localStorage.setItem('result', JSON.stringify(result.data))
+                    console.log(result.data)
+                    this.props.history.push('/result')
+                }
+                
             } else{
                 console.log(result.errors)
             }
