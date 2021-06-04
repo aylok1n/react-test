@@ -21,8 +21,20 @@ class Game extends React.Component {
         this.setState({question: JSON.parse(localStorage.getItem('start')).question})
         this.setState({time: JSON.parse(localStorage.getItem('start')).time})
         this.setState({type_hard: JSON.parse(localStorage.getItem('start')).type_hard})
+        this.startTimer()
     }
 
+    startTimer(){
+        let time = setInterval(() => {
+            this.setState({time: this.state.time -= 1})
+            if(this.state.time == 0){
+                clearInterval(time)
+                alert('time out')
+            }
+        }, 1000)
+        
+        return time
+    }
 
     async play(event){
         let access_token = JSON.parse(localStorage.getItem('access_token')).access_token
@@ -67,6 +79,7 @@ class Game extends React.Component {
                 </div>
                 <div className='game-question'>{this.state.question}</div>
                 <div>{this.state.options.map((i,index) => <input className='game-option' key={index} type='button' value={i} onClick={this.play.bind(this)}/>)}</div>
+                {}
             </div>
         )
     }

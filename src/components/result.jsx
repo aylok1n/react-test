@@ -21,9 +21,6 @@ class Result extends React.Component {
     }
 
 
-    async play(event){
-
-    }
 
     render() {
         return (
