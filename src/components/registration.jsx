@@ -7,19 +7,34 @@ class Registration extends React.Component {
             name: '',
             email: '',
             password: '',
-            password_confirmation: ''
+            password_confirmation: '',
+            errorsName: [],
+            errorsEmail: [],
+            errorsPassword: []
         }
     }
     handleChangeName(event) {
+        this.setState({errorsName: []})
+        this.setState({errorsEmail: []})
+        this.setState({errorsPassword: []})
         this.setState({name: event.target.value});
       }
     handleChangeEmail(event) {
+        this.setState({errorsName: []})
+        this.setState({errorsEmail: []})
+        this.setState({errorsPassword: []})
         this.setState({email: event.target.value});
       }
     handleChangePassword(event) {
+        this.setState({errorsName: []})
+        this.setState({errorsEmail: []})
+        this.setState({errorsPassword: []})
         this.setState({password: event.target.value});
     }
     handleChangePasswordConfarmation(event) {
+        this.setState({errorsName: []})
+        this.setState({errorsEmail: []})
+        this.setState({errorsPassword: []})
         this.setState({password_confirmation: event.target.value});
     }
     async registration(){
@@ -29,7 +44,7 @@ class Registration extends React.Component {
             headers: {
               'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify({name: this.state.name, email: this.state.email, password: this.state.password, password_confirmation: this.state.password_confirmation})
           });
           if (response.ok) {
             let result = await response.json();
@@ -38,6 +53,15 @@ class Registration extends React.Component {
                 this.props.history.push('/')
             } else{
                 console.log(result.errors)
+                if(result.errors.name !== undefined){
+                    this.setState({errorsName: result.errors.name})
+                }
+                if(result.errors.email !== undefined){
+                    this.setState({errorsEmail: result.errors.email})
+                }
+                if(result.errors.password !== undefined){
+                    this.setState({errorsPassword: result.errors.password})
+                }
             }
           } else {
             alert("Ошибка HTTP: " + response.status);
@@ -55,6 +79,9 @@ class Registration extends React.Component {
                     <p className='form-text'>Уже зарегистрированны? <a href='/' className='form-text-hyperlink'>Войти.</a></p>
                     <input className='form-button-reg' type="button" value="Registration" onClick={this.registration.bind(this)}/>
                 </form>
+                {this.state.errorsName.map((i,index) => <p key={index} className='error-text'>{i}</p>)}
+                {this.state.errorsEmail.map((i,index) => <p key={index} className='error-text'>{i}</p>)}
+                {this.state.errorsPassword.map((i,index) => <p key={index} className='error-text'>{i}</p>)}
             </div>
         )
     }

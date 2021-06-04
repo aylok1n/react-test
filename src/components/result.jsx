@@ -20,7 +20,12 @@ class Result extends React.Component {
         this.setState({type_game: JSON.parse(localStorage.getItem('result')).type_game})
     }
 
-
+    goHome(){
+        this.props.history.push('/')
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('start')
+        localStorage.removeItem('result')
+    }
 
     render() {
         return (
@@ -43,6 +48,7 @@ class Result extends React.Component {
                         </div>)
                     }
                 </div>
+                <input className='form-button' onClick={this.goHome.bind(this)} type="button" value="Go Home" />
             </div>
         )
     }

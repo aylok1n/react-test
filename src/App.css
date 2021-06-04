@@ -163,3 +163,7 @@
   color: #00a2ff;
   font-size: 20px;
 }
+.error-text{
+  font-size: 20px;
+  color: red;
+}
